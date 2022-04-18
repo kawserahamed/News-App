@@ -32,19 +32,19 @@ class MainActivity : AppCompatActivity(), NewsItemClicked {
         myAdapter = MyAdapter(applicationContext, this)
         binding.recyclerId.adapter = myAdapter
 
-
     }
 
-    fun fetchData() {
+    private fun fetchData() {
         val queue = Volley.newRequestQueue(this)
+        val key = "cae30c7ef8bb4afc91f685a7f1c2eded"
         val url =
-            "https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=cae30c7ef8bb4afc91f685a7f1c2eded"
+            "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=$key"
         val getRequest: JsonObjectRequest = object : JsonObjectRequest(
             Request.Method.GET,
             url,
             null,
             Response.Listener {
-                Log.e("sdsadas", "$it")
+                Log.e("TAG", "$it")
                 val newsJsonArray = it.getJSONArray("articles")
                 val newsArray = ArrayList<NewsModel>()
                 for (i in 0 until newsJsonArray.length()) {
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity(), NewsItemClicked {
                 }
                 myAdapter.updateNews(newsArray)
             },
-            Response.ErrorListener { error ->
+            Response.ErrorListener {
 
             }
         ) {
