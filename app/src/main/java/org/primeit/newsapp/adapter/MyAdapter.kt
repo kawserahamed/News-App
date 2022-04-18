@@ -1,6 +1,5 @@
 package org.primeit.newsapp.adapter
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import org.primeit.newsapp.NewsModel
+import org.primeit.newsapp.model.NewsModel
 import org.primeit.newsapp.R
 
 class MyAdapter(

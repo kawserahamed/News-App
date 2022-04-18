@@ -1,4 +1,4 @@
-package org.primeit.newsapp
+package org.primeit.newsapp.model
 
 data class NewsModel(
 

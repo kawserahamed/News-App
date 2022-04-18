@@ -1,9 +1,10 @@
-package org.primeit.newsapp
+package org.primeit.newsapp.ui
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
@@ -13,6 +14,7 @@ import com.android.volley.toolbox.Volley
 import org.primeit.newsapp.adapter.MyAdapter
 import org.primeit.newsapp.adapter.NewsItemClicked
 import org.primeit.newsapp.databinding.ActivityMainBinding
+import org.primeit.newsapp.model.NewsModel
 
 class MainActivity : AppCompatActivity(), NewsItemClicked {
 
@@ -36,7 +38,7 @@ class MainActivity : AppCompatActivity(), NewsItemClicked {
     fun fetchData() {
         val queue = Volley.newRequestQueue(this)
         val url =
-            "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=cae30c7ef8bb4afc91f685a7f1c2eded"
+            "https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=cae30c7ef8bb4afc91f685a7f1c2eded"
         val getRequest: JsonObjectRequest = object : JsonObjectRequest(
             Request.Method.GET,
             url,
@@ -73,12 +75,10 @@ class MainActivity : AppCompatActivity(), NewsItemClicked {
     }
 
     override fun onItemClicked(item: NewsModel) {
-//        String url = ¨https://paul.kinlan.me/¨;
-//        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-//        CustomTabsIntent customTabsIntent = builder.build();
-//        customTabsIntent.launchUrl(this, Uri.parse(url));
+        val builder = CustomTabsIntent.Builder()
+        val customTabsIntent = builder.build()
+        customTabsIntent.launchUrl(this, Uri.parse(item.url));
 
-        Toast.makeText(this, "$item Clicked", Toast.LENGTH_SHORT).show()
     }
 
 
